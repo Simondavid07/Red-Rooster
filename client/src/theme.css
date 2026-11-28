@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tailwindcss-safe-area";
+
+@theme {
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 28px;
+  --text-xl: 20px;
+  --text-xl--line-height: 28px;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 32px;
+  --text-3xl: 30px;
+  --text-3xl--line-height: 36px;
+  --text-4xl: 36px;
+  --text-4xl--line-height: 40px;
+  --text-5xl: 48px;
+  --text-5xl--line-height: 52px;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --bg: #fff6e9;
+  --surface: #fffdf8;
+  --surface-alt: #f7e8d3;
+  --text: #2b2118;
+  --dim: #7a6a58;
+  --border: #e8d9c3;
+  --accent: #a31621;
+  --accent-dark: #7e1119;
+  --gold: #e9b44c;
+  --gold-dark: #b9821e;
+  --green: #2e7d32;
+  --radius: 14px;
+  --space-surface: var(--surface);
+  --space-surface-alt: var(--surface-alt);
+  --space-muted: var(--dim);
+  --space-border: var(--border);
+  --space-accent: var(--accent);
+}
+
+/* The brand is a warm cream heritage theme in both system modes — the
+   palette is the identity, so it does not invert in dark mode. */
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+  }
+  button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) {
+    min-height: 2.25rem;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
