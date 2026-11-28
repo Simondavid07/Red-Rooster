@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: red-rooster
+    runtime: node
+    plan: free
+    buildCommand: >-
+      curl -fsSL https://bun.sh/install | bash &&
+      export PATH="$HOME/.bun/bin:$PATH" &&
+      bun install && bun run build
+    startCommand: >-
+      export PATH="$HOME/.bun/bin:$PATH" &&
+      bun run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Hosted database (Turso) — this is what makes data survive restarts
+      # and redeploys on the free tier. `sync: false` means Render asks for
+      # these values when the Blueprint is created; paste them in the
+      # Render dashboard (Environment) — see README.md "Deploy on Render".
+      # The auth token is a secret: never commit it or paste it in chat.
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false
+    # No persistent disk is needed any more: products, orders, admin
+    # account, settings and product images all live in Turso, not on the
+    # instance's filesystem. (Render disks require a paid instance, and
+    # this app no longer uses one.)
